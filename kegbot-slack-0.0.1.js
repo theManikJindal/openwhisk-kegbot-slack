@@ -76449,20 +76449,7 @@ function extend() {
  * 
  * @returns {Promise}
  */function main(a){return new Promise(function(b,c){//send message to slack channel
-try{var d=require("@slack/client").IncomingWebhook}catch(h){console.log(h),c({message:"Could not load @slack/client",error:h.toString()})}var e=a.slack_webhook_url,f=new d(e);console.log(a);var g=a.asset.name+" created.";/*var slack_message = {
-                attachments: [
-                    {
-                        fallback: slack_message_text,
-                        color: "#36a64f",
-                        pretext: "",
-                        text: slack_message_text,
-                        "image_url": images !== null && typeof(images) !== "undefined" ? images[0].original_url : params.data.drink.keg.illustration_thumbnail_url,
-                        "thumb_url": images !== null && typeof(images) !== "undefined" ? images[0].thumbnail_url : params.data.drink.keg.illustration_thumbnail_url,
-                        "footer": "Kegbot API",
-                        "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png"
-                    }
-                ]
-            }*/f.send(g,function(h,i){h?(console.log("Error:",h),c(a)):(console.log("Message sent: ",i),b(a))})})}exports.default=main;
+try{var d=require("@slack/client").IncomingWebhook}catch(j){console.log(j),c({message:"Could not load @slack/client",error:j.toString()})}var e=a.slack_webhook_url,f=new d(e);console.log(a);var g=a.asset.name+" created.",h="https://assets-stage.adobecc.com/file?location=https://cc-ap1-stage.adobesc.com/api/v1/assets/"+a.asset.urn.substr(a.asset.urn.lastIndexOf(":")+1);f.send({attachments:[{fallback:g,color:"#36a64f",pretext:"",text:g,title:g,title_link:h,footer:"BladeRunner Action",footer_icon:"https://platform.slack-edge.com/img/default_application_icon.png"}]},function(j,k){j?(console.log("Error:",j),c(a)):(console.log("Message sent: ",k),b(a))})})}exports.default=main;
 
 },{"@slack/client":1}]},{},[]);
 var main = require('main-action').default;

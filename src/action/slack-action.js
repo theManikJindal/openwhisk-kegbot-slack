@@ -28,23 +28,24 @@ function main(params) {
 
             
             var slack_message_text = params.asset.name + " created.";
+            var link_to_asset = "https://assets-stage.adobecc.com/file?location=https://cc-ap1-stage.adobesc.com/api/v1/assets/" + params.asset.urn.substr(params.asset.urn.lastIndexOf(':')+1);
 
-            /*var slack_message = {
+            var slack_message = {
                 attachments: [
                     {
                         fallback: slack_message_text,
                         color: "#36a64f",
                         pretext: "",
                         text: slack_message_text,
-                        "image_url": images !== null && typeof(images) !== "undefined" ? images[0].original_url : params.data.drink.keg.illustration_thumbnail_url,
-                        "thumb_url": images !== null && typeof(images) !== "undefined" ? images[0].thumbnail_url : params.data.drink.keg.illustration_thumbnail_url,
-                        "footer": "Kegbot API",
+                        title: slack_message_text,
+                        title_link: link_to_asset,
+                        "footer": "BladeRunner Action",
                         "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png"
                     }
                 ]
-            }*/
+            }
 
-            webhook.send(slack_message_text,
+            webhook.send(slack_message,
                 function (err, res) {
                     if (err) {
                         console.log('Error:', err);
